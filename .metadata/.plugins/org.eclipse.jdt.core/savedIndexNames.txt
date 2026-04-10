@@ -1,3 +1,0 @@
-INDEX VERSION 1.131+C:\Users\roger\Downloads\proyecto_grupoB\.metadata\.plugins\org.eclipse.jdt.core
-798964898.index
-3343014647.index

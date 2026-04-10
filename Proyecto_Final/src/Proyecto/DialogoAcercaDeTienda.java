@@ -79,12 +79,12 @@ public class DialogoAcercaDeTienda extends JDialog implements ActionListener {
 
 		lblAño = new JLabel("2026");
 		lblAño.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblAño.setBounds(321, 219, 40, 15);
+		lblAño.setBounds(320, 235, 40, 15);
 		contentPanel.add(lblAño);
 
 		lblLimaPeru = new JLabel("Lima, Per\u00FA");
 		lblLimaPeru.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblLimaPeru.setBounds(308, 251, 94, 15);
+		lblLimaPeru.setBounds(307, 261, 94, 15);
 		contentPanel.add(lblLimaPeru);
 		
 		lblJenniffer = new JLabel("Jenniffer Mej\u00EDa");
@@ -113,9 +113,19 @@ public class DialogoAcercaDeTienda extends JDialog implements ActionListener {
 		contentPanel.add(lblJhonny);
 		
 		lblFoto = new JLabel("");
-		lblFoto.setIcon(new ImageIcon(DialogoAcercaDeTienda.class.getResource("/imagenes/autosinfondo4.png")));
-		lblFoto.setBounds(208, 65, 225, 187);
+		lblFoto.setBounds(228, 54, 223, 222);
 		contentPanel.add(lblFoto);
+		
+		// Código para cargar y ajustar la imagen manualmente
+		try {
+		    ImageIcon imgIcono = new ImageIcon("img/img3.png");
+		    java.awt.Image imgEscalada = imgIcono.getImage().getScaledInstance(
+		        225, 187, java.awt.Image.SCALE_SMOOTH
+		    );
+		    lblFoto.setIcon(new ImageIcon(imgEscalada));
+		} catch (Exception e) {
+		    System.out.println("No se pudo cargar la imagen en Acerca de");
+		}
 		
 		lblGeraldine = new JLabel("Geraldine Alcocer");
 		lblGeraldine.setFont(new Font("Tahoma", Font.BOLD, 12));

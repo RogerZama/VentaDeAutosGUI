@@ -3,11 +3,13 @@ package Proyecto;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.ImageIcon;
+
+
 
 public class Menu_Principal extends JFrame implements ActionListener {
 	/**
@@ -110,9 +112,10 @@ public class Menu_Principal extends JFrame implements ActionListener {
 	 */
 	public Menu_Principal() {
 		setResizable(false);
-		setTitle("Proyecto");
+		setTitle("Proyecto Venta de Autos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
+		setIconImage(new ImageIcon(getClass().getResource("/Proyecto/ico.png")).getImage());
 		
 		menuProyecto = new JMenuBar();
 		setJMenuBar(menuProyecto);
@@ -163,6 +166,31 @@ public class Menu_Principal extends JFrame implements ActionListener {
 		mntmAcercaTienda = new JMenuItem("Acerca De Tienda");
 		mntmAcercaTienda.addActionListener(this);
 		mnAyuda.add(mntmAcercaTienda);
+		
+		
+		// 1. IMPORTANTE: Quitamos el Layout para posicionar el fondo exactamente donde queremos
+		getContentPane().setLayout(null);
+
+		// 2. Creamos un JLabel para que funcione como contenedor de la imagen
+		javax.swing.JLabel lblFondo = new javax.swing.JLabel("");
+
+		// 3. Cargamos la imagen desde la misma ruta que el icono
+		java.net.URL urlFondo = getClass().getResource("fondo.png"); // Asegúrate de que el nombre y extensión sean exactos
+
+		
+		lblFondo.setIcon(new javax.swing.ImageIcon(urlFondo));
+		    
+		// 4. Le damos el tamaño de la ventana (800x600)
+		lblFondo.setBounds(0, 0, 800, 600);
+		    
+		// 5. Lo agregamos al panel principal
+		getContentPane().add(lblFondo);
+		
+		
+		
+		
+		
+		
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == mntmVender) {

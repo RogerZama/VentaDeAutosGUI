@@ -1,0 +1,114 @@
+package Principal;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Menu_Principal extends JFrame implements ActionListener {
+	private JMenuBar menuProyecto;
+	private JMenu mnArchivo;
+	private JMenu mnMantenimiento;
+	private JMenu mnVentas;
+	private JMenu mnConfiguracion;
+	private JMenu mnAyuda;
+	private JMenuItem mntmSalir;
+	private JMenuItem mntmNewMenuItem_1;
+	private JMenuItem mntmNewMenuItem_2;
+	private JMenuItem mntmNewMenuItem_3;
+	private JMenuItem mntmNewMenuItem_4;
+	private JMenuItem mntmNewMenuItem_5;
+	private JMenuItem mntmAcercaTienda;
+	private JMenuItem mntmNewMenuItem_7;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Menu_Principal frame = new Menu_Principal();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Menu_Principal() {
+		setTitle("Proyecto");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 800, 600);
+		
+		menuProyecto = new JMenuBar();
+		setJMenuBar(menuProyecto);
+		
+		mnArchivo = new JMenu("Archivo");
+		menuProyecto.add(mnArchivo);
+		
+		mntmSalir = new JMenuItem("Salir");
+		mntmSalir.addActionListener(this);
+		mnArchivo.add(mntmSalir);
+		
+		mnMantenimiento = new JMenu("Mantenimiento");
+		menuProyecto.add(mnMantenimiento);
+		
+		mntmNewMenuItem_7 = new JMenuItem("Consultar Autos");
+		mnMantenimiento.add(mntmNewMenuItem_7);
+		
+		mntmNewMenuItem_1 = new JMenuItem("Modificar Autos");
+		mnMantenimiento.add(mntmNewMenuItem_1);
+		
+		mntmNewMenuItem_2 = new JMenuItem("Listar Autos");
+		mnMantenimiento.add(mntmNewMenuItem_2);
+		
+		mnVentas = new JMenu("Ventas");
+		menuProyecto.add(mnVentas);
+		
+		mntmNewMenuItem_3 = new JMenuItem("Vender");
+		mnVentas.add(mntmNewMenuItem_3);
+		
+		mnConfiguracion = new JMenu("Configuraci\u00F3n");
+		menuProyecto.add(mnConfiguracion);
+		
+		mntmNewMenuItem_4 = new JMenuItem("Configurar Descuentos");
+		mnConfiguracion.add(mntmNewMenuItem_4);
+		
+		mntmNewMenuItem_5 = new JMenuItem("Configurar Obsequios");
+		mnConfiguracion.add(mntmNewMenuItem_5);
+		
+		mnAyuda = new JMenu("Ayuda");
+		menuProyecto.add(mnAyuda);
+		
+		mntmAcercaTienda = new JMenuItem("Acerca De Tienda");
+		mntmAcercaTienda.addActionListener(this);
+		mnAyuda.add(mntmAcercaTienda);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmAcercaTienda) {
+			actionPerformedMntmAcercaTienda(e);
+		}
+		if (e.getSource() == mntmSalir) {
+			actionPerformedMntmSalir(e);
+		}
+	}
+	protected void actionPerformedMntmSalir(ActionEvent e) {
+		System.exit(0);
+	}
+	protected void actionPerformedMntmAcercaTienda(ActionEvent e) {
+		DialogoAcercaDeTienda ventaAcercaDeTienda= new DialogoAcercaDeTienda();
+		ventaAcercaDeTienda.show(true);
+	}
+}

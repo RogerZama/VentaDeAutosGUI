@@ -1,0 +1,155 @@
+package Proyecto;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+
+public class DialogoVenta extends JDialog implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JButton btnProcesar;
+	private JScrollPane scp;
+	private JComboBox<String> cboMarca;
+	private JLabel lblMarca;
+	private JLabel lblPrecio;
+	private JLabel lblCantidad;
+	private JTextField txtPrecio;
+	private JTextField txtCantidad;
+	private JTextArea txtS;
+	private JButton btnCerrar;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		try {
+			DialogoVenta dialog = new DialogoVenta();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DialogoVenta() {
+		setResizable(false);
+		setTitle("Venta de Veh\u00EDculos");
+		setBounds(100, 100, 527, 368);
+		getContentPane().setLayout(null);
+		
+		btnProcesar = new JButton("Vender");
+		btnProcesar.addActionListener(this);
+		btnProcesar.setBounds(369, 55, 89, 23);
+		getContentPane().add(btnProcesar);
+		
+		scp = new JScrollPane();
+		scp.setBounds(33, 155, 425, 146);
+		getContentPane().add(scp);
+		
+		txtS = new JTextArea();
+		txtS.setEditable(false);
+		scp.setViewportView(txtS);
+		
+		cboMarca = new JComboBox<String>();
+		cboMarca.addActionListener(this);
+		cboMarca.setBounds(157, 23, 111, 23);
+		cboMarca.setModel(new DefaultComboBoxModel<String>(new String[] {"TOYOTA", "HYUNDAI", "HONDA", "KIA", "MAZDA"}));
+		getContentPane().add(cboMarca);
+		
+		lblMarca = new JLabel("Marca");
+		lblMarca.setBounds(33, 27, 71, 14);
+		getContentPane().add(lblMarca);
+		
+		lblPrecio = new JLabel("Precio ($.)");
+		lblPrecio.setBounds(33, 59, 71, 14);
+		getContentPane().add(lblPrecio);
+		
+		lblCantidad = new JLabel("Cantidad ");
+		lblCantidad.setBounds(33, 93, 83, 14);
+		getContentPane().add(lblCantidad);
+		
+		txtPrecio = new JTextField();
+		txtPrecio.setEditable(false);
+		txtPrecio.setBounds(157, 56, 111, 20);
+		getContentPane().add(txtPrecio);
+		txtPrecio.setColumns(10);
+		txtPrecio.setText(String.format("%.2f",Menu_Principal.precio0));
+		
+		txtCantidad = new JTextField();
+		txtCantidad.setBounds(157, 90, 111, 20);
+		getContentPane().add(txtCantidad);
+		txtCantidad.setColumns(10);
+		
+		btnCerrar = new JButton("Cerrar");
+		btnCerrar.addActionListener(this);
+		btnCerrar.setBounds(369, 89, 89, 23);
+		getContentPane().add(btnCerrar);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnProcesar) {
+			actionPerformedBtnProcesar(e);
+		}
+		if (e.getSource() == cboMarca) {
+			actionPerformedCboMarca(e);
+		}
+		if (e.getSource() == btnCerrar) {
+			actionPerformedBtnCerrar(e);
+		}
+	}
+	protected void actionPerformedBtnCerrar(ActionEvent e) {
+		dispose();
+	}
+	protected void actionPerformedCboMarca(ActionEvent e) 
+	{
+		switch (cboMarca.getSelectedIndex()) 
+		
+		{
+		case 0:
+			txtPrecio.setText(String.format("%.2f",Menu_Principal.precio0));
+			break;
+		case 1:
+			txtPrecio.setText(String.format("%.2f",Menu_Principal.precio1));
+			break;
+		case 2:
+			txtPrecio.setText(String.format("%.2f",Menu_Principal.precio2));
+			break;
+		case 3:
+			txtPrecio.setText(String.format("%.2f",Menu_Principal.precio3));
+			break;
+		default:
+			txtPrecio.setText(String.format("%.2f",Menu_Principal.precio4));
+			break;
+		}
+		
+		
+	}
+	protected void actionPerformedBtnProcesar(ActionEvent e) 
+	
+	{
+		
+		txtS.setText("BOLETA DE VENTA" + "\n\n\n");
+		
+		
+	}
+}
+

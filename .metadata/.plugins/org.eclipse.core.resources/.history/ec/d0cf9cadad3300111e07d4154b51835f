@@ -1,0 +1,134 @@
+package Principal;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.UIManager;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+
+public class DialogoAcercaDeTienda extends JDialog implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
+	private final JPanel contentPanel = new JPanel();
+	private JLabel lblTienda;
+	private JButton btnCerrar;
+	private JLabel lblAutor;
+	private JLabel lblAño;
+	private JLabel lblLimaPeru;
+	private JLabel lblJenniffer;
+	private JLabel lblBruce;
+	private JLabel lblRuby;
+	private JLabel lblMarlon;
+	private JLabel lblJhonny;
+	private JLabel lblGeraldine;
+	private JLabel lblFoto;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		}
+		catch (Throwable e) {
+			e.printStackTrace();
+		}
+		try {
+			DialogoAcercaDeTienda dialog = new DialogoAcercaDeTienda();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DialogoAcercaDeTienda() {
+		setTitle("Acerca de Tienda");
+		setBounds(100, 100, 500, 400);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+
+		lblTienda = new JLabel("Venta de Autos");
+		lblTienda.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblTienda.setBounds(83, 10, 199, 57);
+		contentPanel.add(lblTienda);
+
+		btnCerrar = new JButton("Cerrar");
+		btnCerrar.addActionListener(this);
+		btnCerrar.setBounds(196, 317, 89, 23);
+		contentPanel.add(btnCerrar);
+
+		lblAutor = new JLabel("AUTORES:\t");
+		lblAutor.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblAutor.setBounds(26, 54, 106, 44);
+		contentPanel.add(lblAutor);
+
+		lblAño = new JLabel("2026");
+		lblAño.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblAño.setBounds(321, 219, 40, 15);
+		contentPanel.add(lblAño);
+
+		lblLimaPeru = new JLabel("Lima, Per\u00FA");
+		lblLimaPeru.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblLimaPeru.setBounds(308, 251, 94, 15);
+		contentPanel.add(lblLimaPeru);
+		
+		lblJenniffer = new JLabel("Jenniffer Mej\u00EDa");
+		lblJenniffer.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblJenniffer.setBounds(26, 93, 137, 23);
+		contentPanel.add(lblJenniffer);
+		
+		lblBruce = new JLabel("Bruce Or\u00E9");
+		lblBruce.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblBruce.setBounds(26, 127, 80, 17);
+		contentPanel.add(lblBruce);
+		
+		lblRuby = new JLabel("Ruby Fenco");
+		lblRuby.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblRuby.setBounds(26, 154, 89, 17);
+		contentPanel.add(lblRuby);
+		
+		lblMarlon = new JLabel("Marlon Lara");
+		lblMarlon.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblMarlon.setBounds(26, 181, 75, 23);
+		contentPanel.add(lblMarlon);
+		
+		lblJhonny = new JLabel("Jhonny Yataco");
+		lblJhonny.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblJhonny.setBounds(26, 214, 94, 23);
+		contentPanel.add(lblJhonny);
+		
+		lblFoto = new JLabel("");
+		lblFoto.setIcon(new ImageIcon(DialogoAcercaDeTienda.class.getResource("/imagenes/autosinfondo4.png")));
+		lblFoto.setBounds(208, 65, 225, 187);
+		contentPanel.add(lblFoto);
+		
+		lblGeraldine = new JLabel("Geraldine Alcocer");
+		lblGeraldine.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblGeraldine.setBounds(27, 247, 136, 23);
+		contentPanel.add(lblGeraldine);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnCerrar) {
+			actionPerformedBtnCerrar(e);
+		}
+	}
+
+	protected void actionPerformedBtnCerrar(ActionEvent e) {
+		dispose();
+	}
+}

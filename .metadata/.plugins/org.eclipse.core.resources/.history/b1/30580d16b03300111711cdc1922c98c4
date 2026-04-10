@@ -1,0 +1,154 @@
+package Proyecto;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.UIManager;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.SystemColor;
+
+public class ConsultarAuto extends JDialog implements ActionListener {
+
+	private static final long serialVersionUID = 32705407359759178L;
+	private final JPanel contentPanel = new JPanel();
+	private JLabel lblPrecio;
+	private JTextField txtPrecio;
+	private JLabel lblMarca;
+	private JTextField txtMarca;
+	private JButton btnCerrar;
+	private JLabel lblModelo;
+	private JComboBox<String> cboModelo;
+	private JLabel lblTorque;
+	private JTextField txtTorque;
+	private JLabel lblStock;
+	private JTextField txtStock;
+	private JLabel lblGarantia;
+	private JTextField txtGarantia;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		try {
+			ConsultarAuto dialog = new ConsultarAuto();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public ConsultarAuto() {
+		setTitle("Consultar Autos");
+		setResizable(false);
+		setBounds(100, 100, 500,250);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+
+		lblModelo = new JLabel("Modelo");
+		lblModelo.setBounds(21, 45, 46, 14);
+		contentPanel.add(lblModelo);
+
+		lblMarca = new JLabel("Marca");
+		lblMarca.setBounds(21, 14, 46, 14);
+		contentPanel.add(lblMarca);
+
+		lblPrecio = new JLabel("Precio S/.");
+		lblPrecio.setBounds(21, 76, 46, 14);
+		contentPanel.add(lblPrecio);
+
+		cboModelo = new JComboBox<String>();
+		cboModelo.addActionListener(this);
+		cboModelo.setModel(new DefaultComboBoxModel(new String[] {"Toyota", "Honda", "Hyundai", "Kia", "Mazda"}));
+		cboModelo.setBounds(77, 11, 229, 20);
+		contentPanel.add(cboModelo);
+
+		txtMarca = new JTextField();
+		txtMarca.setBackground(SystemColor.control);
+		txtMarca.setEditable(false);
+		txtMarca.setBounds(77, 42, 157, 20);
+		contentPanel.add(txtMarca);
+		txtMarca.setColumns(10);
+
+		txtPrecio = new JTextField();
+		txtPrecio.setBackground(SystemColor.control);
+		txtPrecio.setEditable(false);
+		txtPrecio.setBounds(78, 73, 156, 20);
+		contentPanel.add(txtPrecio);
+		txtPrecio.setColumns(10);
+
+		btnCerrar = new JButton("Cerrar");
+		btnCerrar.addActionListener(this);
+		btnCerrar.setBounds(358, 14, 89, 23);
+		contentPanel.add(btnCerrar);
+		
+		lblTorque = new JLabel("Torque");
+		lblTorque.setBounds(21, 107, 46, 14);
+		contentPanel.add(lblTorque);
+		
+		txtTorque = new JTextField();
+		txtTorque.setEditable(false);
+		txtTorque.setColumns(10);
+		txtTorque.setBackground(SystemColor.control);
+		txtTorque.setBounds(78, 104, 156, 20);
+		contentPanel.add(txtTorque);
+		
+		lblStock = new JLabel("Stock");
+		lblStock.setBounds(21, 138, 46, 14);
+		contentPanel.add(lblStock);
+		
+		txtStock = new JTextField();
+		txtStock.setEditable(false);
+		txtStock.setColumns(10);
+		txtStock.setBackground(SystemColor.control);
+		txtStock.setBounds(78, 135, 156, 20);
+		contentPanel.add(txtStock);
+		
+		lblGarantia = new JLabel("Garantia");
+		lblGarantia.setBounds(21, 169, 46, 14);
+		contentPanel.add(lblGarantia);
+		
+		txtGarantia = new JTextField();
+		txtGarantia.setEditable(false);
+		txtGarantia.setColumns(10);
+		txtGarantia.setBackground(SystemColor.control);
+		txtGarantia.setBounds(78, 166, 156, 20);
+		contentPanel.add(txtGarantia);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == cboModelo) {
+			actionPerformedCboCodigo(e);
+		}
+		if (e.getSource() == btnCerrar) {
+			actionPerformedBtnCerrar(e);
+		}
+	}
+
+	protected void actionPerformedBtnCerrar(ActionEvent e) {
+		dispose();
+	}
+
+	protected void actionPerformedCboCodigo(ActionEvent e) {
+
+	}
+}

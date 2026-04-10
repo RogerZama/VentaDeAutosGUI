@@ -1,0 +1,218 @@
+package Proyecto;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JToolBar;
+
+public class Menu_Principal extends JFrame implements ActionListener {
+	private JMenuBar menuProyecto;
+	private JMenu mnArchivo;
+	private JMenu mnMantenimiento;
+	private JMenu mnVentas;
+	private JMenu mnConfiguracion;
+	private JMenu mnAyuda;
+	private JMenuItem mntmSalir;
+	private JMenuItem mntmModificarAutos;
+	private JMenuItem mntmListarAutos;
+	private JMenuItem mntmVender;
+	private JMenuItem mntmConfigurarDescuentos;
+	private JMenuItem mntmConfigurarObsequios;
+	private JMenuItem mntmAcercaTienda;
+	private JMenuItem mntmConsultaAutos;
+
+	
+	// Datos mínimos de la primera marca de auto
+		public static String marca0 = "Toyota";
+		public static String modelo0 = "Corolla";
+		public static double precio0 = 22700;
+		public static double torque0 = 200;
+		public static double stock0 = 15;
+		public static double garantia0 = 5;
+
+	// Datos mínimos de la segunda marca de auto
+		public static String marca1 = "Toyota";
+		public static String modelo1 = "Corolla";
+		public static double precio1 = 22700;
+		public static double torque1 = 200;
+		public static double stock1 = 15;
+		public static double garantia1 = 5;
+		
+	// Datos mínimos de la tercera marca de auto
+		public static String marca2 = "Toyota";
+		public static String modelo2 = "Corolla";
+		public static double precio2 = 22700;
+		public static double torque2 = 200;
+		public static double stock2 = 15;
+		public static double garantia2 = 5;
+		
+	// Datos mínimos de la cuarta marca de auto
+		public static String marca3 = "Toyota";
+		public static String modelo3 = "Corolla";
+		public static double precio3 = 22700;
+		public static double torque3 = 200;
+		public static double stock3 = 15;
+		public static double garantia3 = 5;
+
+	// Datos mínimos de la quinta marca de auto
+		public static String marca4 = "Toyota";
+		public static String modelo4 = "Corolla";
+		public static double precio4 = 22700;
+		public static double torque4 = 200;
+		public static double stock4 = 15;
+		public static double garantia4 = 5;
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Menu_Principal frame = new Menu_Principal();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Menu_Principal() {
+		setTitle("Proyecto");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 800, 600);
+		
+		menuProyecto = new JMenuBar();
+		setJMenuBar(menuProyecto);
+		
+		mnArchivo = new JMenu("Archivo");
+		menuProyecto.add(mnArchivo);
+		
+		mntmSalir = new JMenuItem("Salir");
+		mntmSalir.addActionListener(this);
+		mnArchivo.add(mntmSalir);
+		
+		mnMantenimiento = new JMenu("Mantenimiento");
+		menuProyecto.add(mnMantenimiento);
+		
+		mntmConsultaAutos = new JMenuItem("Consultar Autos");
+		mntmConsultaAutos.addActionListener(this);
+		mnMantenimiento.add(mntmConsultaAutos);
+		
+		mntmModificarAutos = new JMenuItem("Modificar Autos");
+		mntmModificarAutos.addActionListener(this);
+		mnMantenimiento.add(mntmModificarAutos);
+		
+		mntmListarAutos = new JMenuItem("Listar Autos");
+		mntmListarAutos.addActionListener(this);
+		mnMantenimiento.add(mntmListarAutos);
+		
+		mnVentas = new JMenu("Ventas");
+		menuProyecto.add(mnVentas);
+		
+		mntmVender = new JMenuItem("Vender");
+		mntmVender.addActionListener(this);
+		mnVentas.add(mntmVender);
+		
+		mnConfiguracion = new JMenu("Configuraci\u00F3n");
+		menuProyecto.add(mnConfiguracion);
+		
+		mntmConfigurarDescuentos = new JMenuItem("Configurar Descuentos");
+		mntmConfigurarDescuentos.addActionListener(this);
+		mnConfiguracion.add(mntmConfigurarDescuentos);
+		
+		mntmConfigurarObsequios = new JMenuItem("Configurar Obsequios");
+		mntmConfigurarObsequios.addActionListener(this);
+		mnConfiguracion.add(mntmConfigurarObsequios);
+		
+		mnAyuda = new JMenu("Ayuda");
+		menuProyecto.add(mnAyuda);
+		
+		mntmAcercaTienda = new JMenuItem("Acerca De Tienda");
+		mntmAcercaTienda.addActionListener(this);
+		mnAyuda.add(mntmAcercaTienda);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmVender) {
+			actionPerformedMntmVender(e);
+		}
+		if (e.getSource() == mntmModificarAutos) {
+			actionPerformedMntmModificarAutos(e);
+		}
+		if (e.getSource() == mntmConsultaAutos) {
+			actionPerformedMntmConsultaAutos(e);
+		}
+		if (e.getSource() == mntmListarAutos) {
+			actionPerformedMntmListarAutos(e);
+		}
+		if (e.getSource() == mntmConfigurarObsequios) {
+			actionPerformedMntmConfigurarObsequios(e);
+		}
+		if (e.getSource() == mntmConfigurarDescuentos) {
+			actionPerformedMntmConfigurarDescuentos(e);
+		}
+		if (e.getSource() == mntmAcercaTienda) {
+			actionPerformedMntmAcercaTienda(e);
+		}
+		if (e.getSource() == mntmSalir) {
+			actionPerformedMntmSalir(e);
+		}
+	}
+	protected void actionPerformedMntmSalir(ActionEvent e) {
+		System.exit(0);
+	}
+	protected void actionPerformedMntmAcercaTienda(ActionEvent e) {
+		DialogoAcercaDeTienda ventanaAcercaDeTienda= new DialogoAcercaDeTienda();
+		ventanaAcercaDeTienda.setLocationRelativeTo(this);
+		ventanaAcercaDeTienda.setVisible(true);
+	}
+	protected void actionPerformedMntmConfigurarDescuentos(ActionEvent e) {
+		ConfigurarDescuento ventanaConfigurarDescuento=new ConfigurarDescuento();
+		ventanaConfigurarDescuento.setLocationRelativeTo(this);
+		ventanaConfigurarDescuento.setVisible(true);
+	}
+	protected void actionPerformedMntmConfigurarObsequios(ActionEvent e) {
+		ConfigurarObsequios ventanaConfigurarObsequios=new ConfigurarObsequios();
+		ventanaConfigurarObsequios.setLocationRelativeTo(this);
+		ventanaConfigurarObsequios.setVisible(true);
+	}
+	protected void actionPerformedMntmListarAutos(ActionEvent e) {
+		DialogoListar ventanaDialogoListar=new DialogoListar();
+		ventanaDialogoListar.setLocationRelativeTo(this);
+		ventanaDialogoListar.setVisible(true);
+	}
+	protected void actionPerformedMntmConsultaAutos(ActionEvent e) {
+		ConsultarAuto ventanaConsultarAuto=new ConsultarAuto();
+		ventanaConsultarAuto.setLocationRelativeTo(this);
+		ventanaConsultarAuto.setVisible(true);
+	}
+	protected void actionPerformedMntmModificarAutos(ActionEvent e) {
+		ModificarAuto ventanaModificarAuto=new ModificarAuto();
+		ventanaModificarAuto.setLocationRelativeTo(this);
+		ventanaModificarAuto.setVisible(true);
+	}
+	protected void actionPerformedMntmVender(ActionEvent e) {
+		DialogoVenta ventanaDialogoVenta=new DialogoVenta();
+		ventanaDialogoVenta.setLocationRelativeTo(this);
+		ventanaDialogoVenta.setVisible(true);
+	}
+}

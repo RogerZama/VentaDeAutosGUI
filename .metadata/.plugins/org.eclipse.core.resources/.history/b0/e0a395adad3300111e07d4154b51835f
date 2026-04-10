@@ -1,0 +1,106 @@
+package Principal;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class DialogoVenta extends JDialog implements ActionListener {
+	private JButton btnProcesar;
+	private JScrollPane scp;
+	private JComboBox cboModelo;
+	private JLabel lblModelo;
+	private JLabel lblPrecio;
+	private JLabel lblCantidad;
+	private JTextField txtPrecio;
+	private JTextField txtCantidad;
+	private JTextArea txtS;
+	private JButton btnCerrar;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			DialogoVenta dialog = new DialogoVenta();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DialogoVenta() {
+		setTitle("Venta de Veh\u00EDculos");
+		setBounds(100, 100, 527, 368);
+		getContentPane().setLayout(null);
+		
+		btnProcesar = new JButton("Vender");
+		btnProcesar.setBounds(331, 55, 89, 23);
+		getContentPane().add(btnProcesar);
+		
+		scp = new JScrollPane();
+		scp.setBounds(49, 155, 409, 146);
+		getContentPane().add(scp);
+		
+		txtS = new JTextArea();
+		txtS.setEditable(false);
+		scp.setViewportView(txtS);
+		
+		cboModelo = new JComboBox();
+		cboModelo.setBounds(143, 23, 110, 23);
+		cboModelo.setModel(new DefaultComboBoxModel(new String[] {"Toyota Corolla", "Honda Civic", "Hyundai Elantra", "Kia Cerato", "Mazda 3"}));
+		getContentPane().add(cboModelo);
+		
+		lblModelo = new JLabel("Modelo");
+		lblModelo.setBounds(33, 23, 71, 23);
+		getContentPane().add(lblModelo);
+		
+		lblPrecio = new JLabel(" Precio(S/)");
+		lblPrecio.setBounds(33, 59, 71, 14);
+		getContentPane().add(lblPrecio);
+		
+		lblCantidad = new JLabel("Cantidad ");
+		lblCantidad.setBounds(33, 93, 83, 14);
+		getContentPane().add(lblCantidad);
+		
+		txtPrecio = new JTextField();
+		txtPrecio.setBounds(143, 56, 96, 20);
+		getContentPane().add(txtPrecio);
+		txtPrecio.setColumns(10);
+		
+		txtCantidad = new JTextField();
+		txtCantidad.setBounds(143, 90, 96, 20);
+		getContentPane().add(txtCantidad);
+		txtCantidad.setColumns(10);
+		
+		btnCerrar = new JButton("Cerrar");
+		btnCerrar.addActionListener(this);
+		btnCerrar.setBounds(331, 89, 89, 23);
+		getContentPane().add(btnCerrar);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnCerrar) {
+			actionPerformedBtnCerrar(e);
+		}
+	}
+	protected void actionPerformedBtnCerrar(ActionEvent e) {
+		dispose();
+	}
+}
+

@@ -1,0 +1,159 @@
+package Proyecto;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+
+public class ModificarAuto extends JDialog implements ActionListener {
+
+	private static final long serialVersionUID = 32705407359759178L;
+	private final JPanel contentPanel = new JPanel();
+	private JLabel lblPrecio;
+	private JTextField txtPrecio;
+	private JLabel lblMarca;
+	private JTextField txtModelo;
+	private JButton btnCerrar;
+	private JLabel lblModelo;
+	private JComboBox<String> cboMarca;
+	private JLabel lblTorque;
+	private JTextField txtTorque;
+	private JLabel lblStock;
+	private JTextField txtStock;
+	private JLabel lblGarantia;
+	private JTextField txtGarantia;
+	private JButton btnGuardar;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		try {
+			ModificarAuto dialog = new ModificarAuto();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public ModificarAuto() {
+		setTitle("Modificar Autos");
+		setResizable(false);
+		setBounds(100, 100, 500,250);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+
+		lblModelo = new JLabel("Modelo");
+		lblModelo.setBounds(21, 48, 46, 14);
+		contentPanel.add(lblModelo);
+
+		lblMarca = new JLabel("Marca");
+		lblMarca.setBounds(21, 17, 46, 14);
+		contentPanel.add(lblMarca);
+
+		lblPrecio = new JLabel("Precio ($.)");
+		lblPrecio.setBounds(21, 79, 73, 14);
+		contentPanel.add(lblPrecio);
+
+		cboMarca = new JComboBox<String>();
+		cboMarca.addActionListener(this);
+		cboMarca.setModel(new DefaultComboBoxModel(new String[] {"TOYOTA", "HONDA", "HYUNDAI", "KIA", "MAZDA"}));
+		cboMarca.setBounds(138, 13, 157, 20);
+		contentPanel.add(cboMarca);
+
+		txtModelo = new JTextField();
+		txtModelo.setBackground(Color.WHITE);
+		txtModelo.setBounds(138, 44, 157, 20);
+		contentPanel.add(txtModelo);
+		txtModelo.setColumns(10);
+
+		txtPrecio = new JTextField();
+		txtPrecio.setBackground(Color.WHITE);
+		txtPrecio.setBounds(139, 75, 156, 20);
+		contentPanel.add(txtPrecio);
+		txtPrecio.setColumns(10);
+
+		btnCerrar = new JButton("Cerrar");
+		btnCerrar.addActionListener(this);
+		btnCerrar.setBounds(358, 48, 89, 23);
+		contentPanel.add(btnCerrar);
+		
+		lblTorque = new JLabel("Torque (Nm)");
+		lblTorque.setBounds(21, 110, 73, 14);
+		contentPanel.add(lblTorque);
+		
+		txtTorque = new JTextField();
+		txtTorque.setColumns(10);
+		txtTorque.setBackground(Color.WHITE);
+		txtTorque.setBounds(139, 106, 156, 20);
+		contentPanel.add(txtTorque);
+		
+		lblStock = new JLabel("Stock");
+		lblStock.setBounds(21, 141, 46, 14);
+		contentPanel.add(lblStock);
+		
+		txtStock = new JTextField();
+		txtStock.setColumns(10);
+		txtStock.setBackground(Color.WHITE);
+		txtStock.setBounds(139, 137, 156, 20);
+		contentPanel.add(txtStock);
+		
+		lblGarantia = new JLabel("Garantia (a\u00F1os)");
+		lblGarantia.setBounds(21, 172, 108, 14);
+		contentPanel.add(lblGarantia);
+		
+		txtGarantia = new JTextField();
+		txtGarantia.setColumns(10);
+		txtGarantia.setBackground(Color.WHITE);
+		txtGarantia.setBounds(139, 168, 156, 20);
+		contentPanel.add(txtGarantia);
+		
+		btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(this);
+		btnGuardar.setBounds(358, 13, 89, 23);
+		contentPanel.add(btnGuardar);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnGuardar) {
+			actionPerformedBtnGuardar(e);
+		}
+		if (e.getSource() == cboMarca) {
+			actionPerformedCboCodigo(e);
+		}
+		if (e.getSource() == btnCerrar) {
+			actionPerformedBtnCerrar(e);
+		}
+	}
+
+	protected void actionPerformedBtnCerrar(ActionEvent e) {
+		dispose();
+	}
+
+	protected void actionPerformedCboCodigo(ActionEvent e) {
+
+	}
+	protected void actionPerformedBtnGuardar(ActionEvent e) {
+	}
+}
